@@ -1,27 +1,44 @@
 package com.project.FileChecker.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
-@Getter @Setter @AllArgsConstructor @NoArgsConstructor
 public class UserRole {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-private  Long userRoleId;
-
-    //single user
+    private long userRoleId;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-   private Student student;
+    private Student student;
 
     @ManyToOne
-private  Role role;
+    private Role role;
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public long getUserRoleId() {
+        return userRoleId;
+    }
+
+    public void setUserRoleId(long userRoleId) {
+        this.userRoleId = userRoleId;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 }

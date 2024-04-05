@@ -2,23 +2,56 @@ package com.project.FileChecker.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@NoArgsConstructor @AllArgsConstructor @Getter @Setter
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long roleId;
+    private  long roleId;
     private  String roleName;
+
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "role")
     @JsonIgnore
-    //so that it will not create circular dependency
-    private Set<UserRole> userRoles=new HashSet<>();
+    private Set<UserRole> userRoles =new HashSet<>();
+
+
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+    public Role() {
+
+    }
+
+    public long getRoleId() {
+        return roleId;
+    }
+
+
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public Role(long roleId, String roleName) {
+        this.roleId = roleId;
+        this.roleName = roleName;
+    }
+
+
 }

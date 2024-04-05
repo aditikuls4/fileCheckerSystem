@@ -14,15 +14,17 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/student")
+@CrossOrigin("*")
 public class StudentController {
 
     @Autowired
     StudentService studentService;
     public static String rid="R1";
 
-    @PostMapping
+    @PostMapping("/")
     public Student createStudent(@RequestBody Student student) throws Exception {
 
+        student.setProfile("default.png");
         Set<UserRole> roles=new HashSet<>();
         Role role=new Role();
         role.setRoleId(45L);
