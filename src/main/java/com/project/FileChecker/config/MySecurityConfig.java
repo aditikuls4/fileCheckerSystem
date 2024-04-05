@@ -27,8 +27,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
     @EnableGlobalMethodSecurity(prePostEnabled = true)
     public class MySecurityConfig {
 
-
-
             @Autowired
             private UserDetailsServiceImpl userDetailsServiceImpl;
            @Autowired
